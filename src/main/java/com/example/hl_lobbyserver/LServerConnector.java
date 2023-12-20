@@ -1,6 +1,8 @@
 package com.example.hl_lobbyserver;
 
 import java.util.ArrayList;
+import javax.websocket.*;
+import com.google.gson.Gson;
 
 public class LServerConnector{
 	String server_name;
@@ -20,7 +22,7 @@ public class LServerConnector{
 	}
 
 	public void login(String user_id, String password){
-		// TODO implement here
+		ArrayList<User> user_id_list = getUserList();
 	}
 
 	public void logout(String user_id){

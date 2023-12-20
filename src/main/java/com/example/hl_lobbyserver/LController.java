@@ -4,13 +4,20 @@ import java.util.ArrayList;
 
 public class LController{
 
-	public void register(String user_id, String password){
+	public static void main(String[] args){
+		LServerConnector serverConnector = new LServerConnector(); serverConnector.connect("localhost");
+	}
+
+	public void registerUser(String user_id, String password){
 		// TODO implement here
 	}
 
-	public Boolean login(String user_id, ArrayList<User> user_id_list){
-		// TODO implement here
-		return null;
+	public Boolean checkDuplicateUserID(String user_id, ArrayList<User> user_id_list){
+		for(User user : user_id_list){
+			if(user.user_id.equals(user_id)){
+				return true;
+			}
+		} return false;
 	}
 
 	public void login(String user_id, String password){
