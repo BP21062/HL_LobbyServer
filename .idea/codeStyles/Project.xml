@@ -28,7 +28,6 @@
       <option name="SPACE_BEFORE_ELSE_KEYWORD" value="false" />
       <option name="SPACE_BEFORE_CATCH_KEYWORD" value="false" />
       <option name="SPACE_BEFORE_FINALLY_KEYWORD" value="false" />
-      <option name="KEEP_MULTIPLE_EXPRESSIONS_IN_ONE_LINE" value="true" />
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
       </indentOptions>
