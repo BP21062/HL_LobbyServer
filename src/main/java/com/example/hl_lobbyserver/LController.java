@@ -2,10 +2,19 @@ package com.example.hl_lobbyserver;
 
 import java.util.ArrayList;
 
+import org.glassfish.tyrus.server.Server;
+
+
 public class LController{
 
 	public static void main(String[] args){
-		LServerConnector serverConnector = new LServerConnector(); serverConnector.connect("localhost");
+
+		// サーバー接続
+		Server server = new Server("localhost", 8080, "/app", null, LServerConnector.class);
+
+		// メッセージ待機
+
+
 	}
 
 	public void registerUser(String user_id, String password){
@@ -17,7 +26,8 @@ public class LController{
 			if(user.user_id.equals(user_id)){
 				return true;
 			}
-		} return false;
+		}
+		return false;
 	}
 
 	public void login(String user_id, String password){
