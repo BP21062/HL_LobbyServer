@@ -38,6 +38,27 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>  
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/javax.websocket-api-1.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gson.Gson</groupId>
+            <artifactId>Gson</artifactId>  
+            <version>2.8.6</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/gson-2.8.6.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.tyrus.server</groupId>
+            <artifactId>tyrus-server</artifactId>  
+            <version>1.17</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/tyrus-server-1.17.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>

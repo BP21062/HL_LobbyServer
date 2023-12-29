@@ -2,15 +2,32 @@ package com.example.hl_lobbyserver;
 
 import java.util.ArrayList;
 
+import org.glassfish.tyrus.server.Server;
+
+
 public class LController{
 
-	public void register(String user_id, String password){
+	public static void main(String[] args){
+
+		// サーバー接続
+		Server server = new Server("localhost", 8080, "/app", null, LServerConnector.class);
+
+		// メッセージ待機
+
+
+	}
+
+	public void registerUser(String user_id, String password){
 		// TODO implement here
 	}
 
-	public Boolean login(String user_id, ArrayList<User> user_id_list){
-		// TODO implement here
-		return null;
+	public Boolean checkDuplicateUserID(String user_id, ArrayList<User> user_id_list){
+		for(User user : user_id_list){
+			if(user.user_id.equals(user_id)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void login(String user_id, String password){
