@@ -3,7 +3,6 @@ package com.example.hl_lobbyserver;
 import java.util.ArrayList;
 import java.util.Set;
 
-import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -15,25 +14,27 @@ import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.HashSet;
 import java.io.IOException;
+
 /**
- * クライアントと通信を行うクラス
+ * 通信を行うクラス
  * <p>
- * アプリケーションやDBは別
  * 
- * @param server_name サーバー名
- * @param send_db 送信用データベース←？
- * @param receive_db 受信用データベース←？
+ * @param server_name         サーバー名
  * @param establishedSessions 接続中のセッションのset
  * 
  */
 @ServerEndpoint("/")
 public class LServerConnector {
 	private String server_name = ""; // サーバー名
-	int send_db;			 // 送信用データベース	←？
-	int receive_db;			 // 受信用データベース	←？
+
+	private LController lController;
+
+	public LServerConnector(LController lController) {
+		this.lController = lController;
+	}
 
 	// 接続中のセッションのset
-	private static Set<Session> establishedSessions = Collections.synchronizedSet(new HashSet<Session>());	
+	private static Set<Session> establishedSessions = Collections.synchronizedSet(new HashSet<Session>());
 
 	static Gson gson = new Gson();
 
@@ -41,6 +42,7 @@ public class LServerConnector {
 	 * セッションが確立したときに呼び出されるメソッド
 	 * <p>
 	 * 接続が確立したときに得るsessionをセットに追加することで操作できるようにしている
+	 * 
 	 * @param session セッション
 	 * @return なし
 	 * @throws なし
@@ -59,6 +61,7 @@ public class LServerConnector {
 	 * <p>
 	 * 受信したメッセージはString型のjson形式なので、
 	 * gsonを使ってMessage型に変換している
+	 * 
 	 * @param message 受信したメッセージ
 	 * @param session セッション
 	 * @return なし
@@ -73,12 +76,15 @@ public class LServerConnector {
 		// 変換
 		Message mes = gson.fromJson(message, Message.class);
 
+		// メッセージの種類によって処理を分岐
+
 	}
-	
+
 	/**
 	 * セッションが切断されたときに呼び出されるメソッド
 	 * <p>
 	 * セッションが切断されたときにセットから削除することで操作できないようにしている
+	 * 
 	 * @param session セッション
 	 * @return なし
 	 * @throws なし
@@ -90,15 +96,22 @@ public class LServerConnector {
 		System.out.println("[WebSocketServerSample] onClose:" + session.getId());
 
 		// 削除
-		establishedSessions.remove(session);
+		try {
+			session.close();
+			establishedSessions.remove(session);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
 	 * エラーが発生したときに呼び出されるメソッド
 	 * <p>
 	 * 発生したエラーをキャッチし、セットから削除する。
+	 * 
 	 * @param session セッション
-	 * @param error エラー
+	 * @param error   エラー
 	 * @return なし
 	 * @throws なし
 	 * @author den3asphalt
@@ -106,7 +119,13 @@ public class LServerConnector {
 	@OnError
 	public void onError(Session session, Throwable error) {
 		System.out.println("[WebSocketServerSample] onError:" + session.getId());
-		establishedSessions.remove(session);
+		// 削除
+		try {
+			session.close();
+			establishedSessions.remove(session);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void sendMessage(Session session, String message) {
@@ -119,16 +138,7 @@ public class LServerConnector {
 		}
 	}
 
-	public void sendBroadcastMessage(String message) {
-		System.out.println("[WebSocketServerSample] sendBroadcastMessage(): " + message);
-		establishedSessions.forEach(session -> {
-			// 非同期送信（async）
-			session.getAsyncRemote().sendText(message);
-		});
-	}
-
 	public void connect(String server_name) {
-		
 		if (server_name == "Client") {
 			// TODO implement here
 		} else {
@@ -140,11 +150,11 @@ public class LServerConnector {
 	}
 
 	public void disconnect() {
-		// TODO implement here
+		// たぶんonClose()でやってる
 	}
 
 	public void registerUser(String user_id, String password) {
-		// TODO implement here
+		this.lController.registerUser(user_id, password);
 	}
 
 	public void login(String user_id, String password) {
