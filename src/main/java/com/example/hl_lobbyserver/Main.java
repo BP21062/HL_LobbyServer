@@ -19,9 +19,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception{
 		// サーバー接続
-		Server server = new Server("localhost", 8080, "/app", null, LServerConnector.class);
-		final ResourceConfig rc = new ResourceConfig().packages("");
-		final HttpServer restServer = GrizzlyHttpServerFactory.createHttpServer(URI.create(restUri), rc);
+		Server server = new Server("ws", 8080, "/lobby", null, LServerConnector.class);
 
 		// 起動
 		try {
@@ -29,7 +27,7 @@ public class Main {
 			System.in.read();
 		} finally {
 			server.stop();
-			restServer.shutdownNow();
+
 		}
 
 	}

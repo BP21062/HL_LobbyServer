@@ -13,7 +13,7 @@ public class MessageContent{
 	int num_plays_score;//戦績 play回数
 	int num_hits_score;//戦績　hit回数
 	int num_wins_score;//戦績　勝利数
-	List<String> textDataList = new ArrayList<>();//カードおよびルールの画像ファイル(base64)格納用のリスト
+	String image_data;//カードおよびルールの画像ファイル(base64)格納用のリスト
 	String error;
 	List<Integer> room_user_count = new ArrayList<>();
 
