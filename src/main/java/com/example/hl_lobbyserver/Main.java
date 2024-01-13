@@ -7,6 +7,13 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.tyrus.server.Server;
 
+/**
+ * ロビーサーバーのメインクラス
+ * <p>
+ * これを起動することで動かす
+ * 
+ * @param restUri サーバーのURI
+ */
 public class Main {
 	public static final String restUri = "http://localhost:8081";
 
