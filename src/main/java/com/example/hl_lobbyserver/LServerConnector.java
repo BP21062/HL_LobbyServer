@@ -94,10 +94,10 @@ public class LServerConnector {
 				// ここまで来ないけど一応
 				response = new Message("", null);
 				break;
-			case "8": // getScore
+			case "1000": // getScore
 				response = getScore(mes.messageContent.user_id);
 				break;
-			case "9": // getRule
+			case "1001": // getRule
 				response = getRule(mes.messageContent.user_id);
 				break;
 			default:
@@ -124,6 +124,7 @@ public class LServerConnector {
 		// ログ
 		System.out.println("[WebSocketServerSample] onClose:" + session.getId());
 
+
 		// 削除
 		try {
 			establishedSessions.remove(session);
@@ -148,6 +149,7 @@ public class LServerConnector {
 	@OnError
 	public void onError(Session session, Throwable error) {
 		System.out.println("[WebSocketServerSample] onError:" + session.getId());
+		System.out.println(error.getMessage());
 		// 削除
 		try {
 			establishedSessions.remove(session);
@@ -280,7 +282,7 @@ public class LServerConnector {
 		Message message = new Message("2004", user_id);
 		String rule = LDatabaseConnector.getRule();
 
-		message.messageContent.textDataList.add(rule);
+		message.messageContent.image_data = rule;
 
 		return message;
 	}
