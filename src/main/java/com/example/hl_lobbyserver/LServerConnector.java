@@ -79,12 +79,14 @@ public class LServerConnector {
 			case "2": // registerUser
 				// いったんコメントアウト
 				// response = registerUser(mes.messageContent.user_id, mes.messageContent.password);
-				response = new Message("debug2", mes.messageContent.user_id);
+				response = new Message("2000", mes.messageContent.user_id);
+				response.result = true;
 				break;
 			case "4": // login
 				// いったんコメントアウト
 				// response = login(mes.messageContent.user_id, mes.messageContent.password);
-				response = new Message("debug4", mes.messageContent.user_id);
+				response = new Message("2001", mes.messageContent.user_id);
+				response.result = true;
 				break;
 			case "6": // checkRoomState
 				response = checkRoomState(mes.messageContent.user_id, mes.messageContent.room_id);

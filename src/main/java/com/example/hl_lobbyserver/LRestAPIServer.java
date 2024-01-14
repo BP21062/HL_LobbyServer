@@ -30,7 +30,7 @@ public class LRestAPIServer {
 		try{
 
 			// リクエストメッセージの処理
-			Message rxMsg = gson.fromJson(requestBody, Message.class);
+			// Message rxMsg = gson.fromJson(requestBody, Message.class);
 
 			// レスポンスメッセージの生成
 			Message respMsg = new Message("", null);
