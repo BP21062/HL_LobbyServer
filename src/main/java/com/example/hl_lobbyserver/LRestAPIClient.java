@@ -1,11 +1,8 @@
 package com.example.hl_lobbyserver;
 
-import javax.websocket.ClientEndpoint;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
+import jakarta.websocket.*;
+import jakarta.ws.rs.client.*;
+import jakarta.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
 
@@ -17,10 +14,7 @@ public class LRestAPIClient {
 
     private Client client = ClientBuilder.newClient();
     // http://localhost:8081/getsample
-    private String lobbyServerUri = "http://localhost:8081";
-
-    static int count = 0;
-    static int id = 0;
+    private String appServerUri = "http://localhost:8081";
     static Gson gson = new Gson();
 
     /**
@@ -35,14 +29,21 @@ public class LRestAPIClient {
      */
     public Boolean checkRoomState(Message message) {
 
-        WebTarget target = client.target(lobbyServerUri).path("/checkRoomState");
+        // Appサーバへのリクエスト
+        WebTarget target = client.target(appServerUri).path("/checkRoomState");
 
-        System.out.println(gson.toJson(message));
-        count++;
+        // ログ
+        System.out.println("[Lobby] checkRoomState send Message: " + gson.toJson(message));
+        System.out.println("");
+
+        // メッセージを送信
         String result = target.request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.entity(gson.toJson(message), MediaType.APPLICATION_JSON), String.class);
-        System.out.println("[RestClient] postExample: " + result);
 
+        // ログ
+        System.out.println("[Lobby] checkRoomState: " + result);
+
+        // 結果をBoolean型に変換
         Boolean resultBoolean = gson.fromJson(result, Boolean.class);
         return resultBoolean;
     }

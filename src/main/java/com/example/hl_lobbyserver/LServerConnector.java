@@ -3,12 +3,8 @@ package com.example.hl_lobbyserver;
 import java.util.ArrayList;
 import java.util.Set;
 
-import javax.websocket.OnClose;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
-import javax.websocket.server.ServerEndpoint;
+import jakarta.websocket.*;
+import jakarta.websocket.server.ServerEndpoint;
 
 import com.google.gson.Gson;
 import java.util.Collections;
@@ -48,7 +44,7 @@ public class LServerConnector {
 		establishedSessions.add(session); // sessionをセットに追加
 
 		// ログ
-		System.out.println("[WebSocketServerSample] onOpen:" + session.getId());
+		System.out.println("[Lobby] onOpen: " + session.getId());
 	}
 
 	/**
@@ -66,7 +62,8 @@ public class LServerConnector {
 	@OnMessage
 	public void onMessage(final String message, final Session session) throws IOException {
 		// ログ
-		System.out.println("[WebSocketServerSample] onMessage from (session: " + session.getId() + ") msg: " + message);
+		System.out.println("[Lobby] onMessage from (session: " + session.getId() + ") msg: " + message);
+		System.out.println(""); // 長いので空行挟む
 
 		// 変換
 		Message mes = gson.fromJson(message, Message.class);
@@ -75,14 +72,19 @@ public class LServerConnector {
 		String order = mes.order;
 
 		// 後で上書きするので、とりあえず空のメッセージを作っておく
-		Message response = new Message("", null);
+		Message response = new Message("Debug", null);
 
+		// メイン処理
 		switch (order) {
 			case "2": // registerUser
-				response = registerUser(mes.messageContent.user_id, mes.messageContent.password);
+				// いったんコメントアウト
+				// response = registerUser(mes.messageContent.user_id, mes.messageContent.password);
+				response = new Message("debug2", mes.messageContent.user_id);
 				break;
 			case "4": // login
-				response = login(mes.messageContent.user_id, mes.messageContent.password);
+				// いったんコメントアウト
+				// response = login(mes.messageContent.user_id, mes.messageContent.password);
+				response = new Message("debug4", mes.messageContent.user_id);
 				break;
 			case "6": // checkRoomState
 				response = checkRoomState(mes.messageContent.user_id, mes.messageContent.room_id);
@@ -92,13 +94,14 @@ public class LServerConnector {
 				session.close();
 
 				// ここまで来ないけど一応
-				response = new Message("", null);
-				break;
+				return; // バグ防止
 			case "8": // getScore
-				response = getScore(mes.messageContent.user_id);
+				// いったんコメントアウト
+				// response = getScore(mes.messageContent.user_id);
 				break;
 			case "9": // getRule
-				response = getRule(mes.messageContent.user_id);
+				// いったんコメントアウト
+				// response = getRule(mes.messageContent.user_id);
 				break;
 			default:
 				break;
@@ -122,7 +125,7 @@ public class LServerConnector {
 	@OnClose
 	public void onClose(Session session) {
 		// ログ
-		System.out.println("[WebSocketServerSample] onClose:" + session.getId());
+		System.out.println("[Lobby] onClose:" + session.getId());
 
 		// 削除
 		try {
@@ -147,7 +150,7 @@ public class LServerConnector {
 	 */
 	@OnError
 	public void onError(Session session, Throwable error) {
-		System.out.println("[WebSocketServerSample] onError:" + session.getId());
+		System.out.println("[Lobby] onError:" + session.getId());
 		// 削除
 		try {
 			establishedSessions.remove(session);
@@ -157,8 +160,18 @@ public class LServerConnector {
 		}
 	}
 
+	/**
+	 * メッセージを送信するメソッド
+	 * @param session 送信先のセッション
+	 * @param message 送信するMessageクラス
+	 * @return なし
+	 * @throws なし
+	 * @author den3asphalt
+	 */
 	public void sendMessage(Session session, Message message) {
-		System.out.println("[WebSocketServerSample] sendMessage(): " + message);
+		// ログ
+		System.out.println("[Lobby] sendMessage(): " +gson.toJson(message));
+		System.out.println(); // 長いので空行挟む
 		try {
 			// 同期送信（sync）
 			session.getBasicRemote().sendText(gson.toJson(message));
