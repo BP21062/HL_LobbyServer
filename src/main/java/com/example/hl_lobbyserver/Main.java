@@ -14,7 +14,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception{
 		// サーバー接続
-		Server server = new Server("localhost", 8080, "/lobby", null, LServerConnector.class);
+		Server server = new Server("ws", 8080, "/lobby", null, LServerConnector.class);
 
 		// 起動
 		try {

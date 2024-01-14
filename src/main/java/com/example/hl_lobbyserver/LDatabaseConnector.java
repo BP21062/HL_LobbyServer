@@ -137,7 +137,7 @@ public class LDatabaseConnector {
             String queryString = "INSERT INTO USER VALUES('" + user_id + "', '" + password + "');";
 
             // Statementオブジェクトとクエリメッセージを使い，実際に問い合わせて結果を得る
-            stmt.executeQuery(queryString);
+            stmt.executeUpdate(queryString);
 
         } catch (SQLException e) {
             e.printStackTrace();

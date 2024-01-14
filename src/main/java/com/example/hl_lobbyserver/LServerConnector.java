@@ -127,6 +127,7 @@ public class LServerConnector {
 		// ログ
 		System.out.println("[Lobby] onClose:" + session.getId());
 
+
 		// 削除
 		try {
 			establishedSessions.remove(session);
@@ -151,6 +152,7 @@ public class LServerConnector {
 	@OnError
 	public void onError(Session session, Throwable error) {
 		System.out.println("[Lobby] onError:" + session.getId());
+		System.out.println("[Lobby] onError:" + error.getMessage());
 		// 削除
 		try {
 			establishedSessions.remove(session);
@@ -293,7 +295,7 @@ public class LServerConnector {
 		Message message = new Message("2004", user_id);
 		String rule = LDatabaseConnector.getRule();
 
-		message.messageContent.textDataList.add(rule);
+		message.messageContent.image_data = rule;
 
 		return message;
 	}
