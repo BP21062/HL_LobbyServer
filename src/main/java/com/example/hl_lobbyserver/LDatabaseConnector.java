@@ -139,6 +139,10 @@ public class LDatabaseConnector {
             // Statementオブジェクトとクエリメッセージを使い，実際に問い合わせて結果を得る
             stmt.executeUpdate(queryString);
 
+            queryString = "INSERT INTO SCORE VALUES('" + user_id + "', 0, 0, 0);";
+
+            stmt.executeUpdate(queryString);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

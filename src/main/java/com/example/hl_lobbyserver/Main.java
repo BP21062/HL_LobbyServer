@@ -1,10 +1,5 @@
 package com.example.hl_lobbyserver;
 
-import java.net.URI;
-
-import org.glassfish.grizzly.http.server.HttpServer;
-import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
-import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.tyrus.server.Server;
 
 /**
@@ -27,7 +22,6 @@ public class Main {
 			System.in.read();
 		} finally {
 			server.stop();
-
 		}
 
 	}

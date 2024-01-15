@@ -10,20 +10,6 @@
     </content>
     <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:17.0.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.1" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -42,6 +28,299 @@
         <JAVADOC />
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/lib/xml" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:17.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.1" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: javax.websocket:javax.websocket-api:1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.websocket-api-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.google.gson.Gson:Gson:2.8.6">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/gson-2.8.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.tyrus.server:tyrus-server:1.17">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/tyrus-server-1.17.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.tyrus.core:tyrus-core:1.17">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/tyrus-core-1.17.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.tyrus.ext:tyrus-container-grizzly-server:1.7">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/tyrus-container-grizzly-server-1.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.grizzly:grizzly-http-server:2.3.22">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/grizzly-http-server-2.3.22.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.grizzly:grizzly-framework:2.3.22">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/grizzly-framework-2.3.22.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.grizzly:grizzly-http:2.3.22">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/grizzly-http-2.3.22.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jersey:jersey-server:2.32">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jersey-container-grizzly2-http-2.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jersey.core:jersey-server:2.32">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jersey-server-2.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jersey.core:jersey-common:2.32">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jersey-common-2.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.ws.rs.api:javax.ws.rs-api:2.1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.ws.rs-api-2.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jersey.core:jersey-client:2.32">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jersey-client-2.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jersey.inject:jersey-hk2:2.32">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jersey-hk2-2.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.hk2:hk2-core:2.6.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/hk2-core-2.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.hk2:hk2-api:2.6.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/hk2-api-2.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.hk2:hk2-utils:2.6.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/hk2-utils-2.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.hk2:hk2-locator:2.6.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/hk2-locator-2.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.annotation:javax.annotation:3.1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.annotation-3.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.annotation:javax.annotation-api:1.3.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.annotation-api-1.3.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.inject:javax.inject:1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.inject-1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jersey.containers:jersey-container-servlet-core:2.32">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jersey-container-servlet-core-2.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jersey.containers:jersey-container-servlet:2.32">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jersey-container-servlet-2.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.activation:javax.activation-api:1.2.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/xml/javax.activation-api-1.2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.xml.bind:jaxb-api:2.3.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/xml/jaxb-api-2.3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.xml.bind:jaxb-core:4.0.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/xml/jaxb-core-4.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.xml.bind:jaxb-impl:4.0.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/xml/jaxb-impl-4.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: javax.validation:validation-api:2.0.1.Final">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/validation-api-2.0.1.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.tyrus.spi:tyrus-spi:1.17">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/tyrus-spi-1.17.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.tyrus.ext:tyrus-container-grizzly-client:1.17">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/tyrus-container-grizzly-client-1.17.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.glassfish.jaxb:jaxb-runtime:3.0.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/xml/jaxb-runtime-3.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>

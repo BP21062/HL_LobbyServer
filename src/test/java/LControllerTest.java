@@ -1,6 +1,4 @@
 import com.example.hl_lobbyserver.LController;
-import com.example.hl_lobbyserver.LDatabaseConnector;
-import com.example.hl_lobbyserver.Message;
 import com.example.hl_lobbyserver.User;
 
 import org.junit.jupiter.api.BeforeEach;
