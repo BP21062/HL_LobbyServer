@@ -46,7 +46,7 @@ public class LDatabaseConnector {
 
             // 接続先はこんな感じの文字列->jdbc:mysql://sql.yamazaki.se.shibaura-it.ac.jp:13307/データベース名
             String target = url + ":" + sqlServerPort + "/" + sqlDatabaseName;
-            System.out.println("target: " + target);
+            System.out.println("[Lobby] getRule: Access to " + target);
 
             // 接続先情報と"MySQLへログインするための"ユーザIDとパスワードから接続を行う
             Connection connection = DriverManager.getConnection(target, sqlUserId, sqlPassword);
@@ -88,7 +88,7 @@ public class LDatabaseConnector {
 
             // 接続先はこんな感じの文字列->jdbc:mysql://sql.yamazaki.se.shibaura-it.ac.jp:13307/データベース名
             String target = url + ":" + sqlServerPort + "/" + sqlDatabaseName;
-            System.out.println("target: " + target);
+            System.out.println("[Lobby] getuserList: Access to " + target);
 
             // 接続先情報と"MySQLへログインするための"ユーザIDとパスワードから接続を行う
             Connection connection = DriverManager.getConnection(target, sqlUserId, sqlPassword);
@@ -128,7 +128,7 @@ public class LDatabaseConnector {
 
             // 接続先はこんな感じの文字列->jdbc:mysql://sql.yamazaki.se.shibaura-it.ac.jp:13307/データベース名
             String target = url + ":" + sqlServerPort + "/" + sqlDatabaseName;
-            System.out.println("target: " + target);
+            System.out.println("[Lobby] registerUser: Access to " + target);
 
             // 接続先情報と"MySQLへログインするための"ユーザIDとパスワードから接続を行う
             Connection connection = DriverManager.getConnection(target, sqlUserId, sqlPassword);
@@ -163,7 +163,7 @@ public class LDatabaseConnector {
 
             // 接続先はこんな感じの文字列->jdbc:mysql://sql.yamazaki.se.shibaura-it.ac.jp:13307/データベース名
             String target = url + ":" + sqlServerPort + "/" + sqlDatabaseName;
-            System.out.println("target: " + target);
+            System.out.println("[Lobby] getScore: Access to " + target);
 
             // 接続先情報と"MySQLへログインするための"ユーザIDとパスワードから接続を行う
             Connection connection = DriverManager.getConnection(target, sqlUserId, sqlPassword);
