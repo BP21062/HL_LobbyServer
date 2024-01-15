@@ -100,10 +100,12 @@ public class LServerConnector {
 			case "8": // getScore
 				// いったんコメントアウト
 				// response = getScore(mes.messageContent.user_id);
+				response = new Message("2003", mes.messageContent.user_id);
 				break;
 			case "9": // getRule
 				// いったんコメントアウト
 				// response = getRule(mes.messageContent.user_id);
+				response = new Message("2004", mes.messageContent.user_id);
 				break;
 			default:
 				break;
