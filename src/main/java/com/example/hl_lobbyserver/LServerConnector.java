@@ -28,6 +28,7 @@ public class LServerConnector {
 	static Gson gson = new Gson();
 
 	static LRestAPIClient restClient = new LRestAPIClient();
+	static LController lController = new LController();
 
 	/**
 	 * セッションが確立したときに呼び出されるメソッド
@@ -77,35 +78,35 @@ public class LServerConnector {
 		// メイン処理
 		switch (order) {
 			case "2": // registerUser
-				// いったんコメントアウト
-				// response = registerUser(mes.messageContent.user_id, mes.messageContent.password);
-				response = new Message("2000", mes.messageContent.user_id);
-				response.result = true;
+				response = registerUser(mes.messageContent.user_id, mes.messageContent.password);
+				// response = new Message("2000", mes.messageContent.user_id);
+				// response.result = true;
 				break;
+
 			case "4": // login
-				// いったんコメントアウト
-				// response = login(mes.messageContent.user_id, mes.messageContent.password);
-				response = new Message("2001", mes.messageContent.user_id);
-				response.result = true;
+				response = login(mes.messageContent.user_id, mes.messageContent.password);
+				// response = new Message("2001", mes.messageContent.user_id);
+				// response.result = true;
 				break;
+
 			case "6": // checkRoomState
 				response = checkRoomState(mes.messageContent.user_id, mes.messageContent.room_id);
 				break;
+
 			case "7": // logout
+				// ここには来ないけど一応
 				establishedSessions.remove(session);
 				session.close();
-
-				// ここまで来ないけど一応
 				return; // バグ防止
+
 			case "8": // getScore
-				// いったんコメントアウト
-				// response = getScore(mes.messageContent.user_id);
-				response = new Message("2003", mes.messageContent.user_id);
+				response = getScore(mes.messageContent.user_id);
+				// response = new Message("2003", mes.messageContent.user_id);
 				break;
+
 			case "9": // getRule
-				// いったんコメントアウト
-				// response = getRule(mes.messageContent.user_id);
-				response = new Message("2004", mes.messageContent.user_id);
+				response = getRule(mes.messageContent.user_id);
+				// response = new Message("2004", mes.messageContent.user_id);
 				break;
 			default:
 				break;
@@ -130,7 +131,6 @@ public class LServerConnector {
 	public void onClose(Session session) {
 		// ログ
 		System.out.println("[Lobby] onClose:" + session.getId());
-
 
 		// 削除
 		try {
@@ -168,6 +168,7 @@ public class LServerConnector {
 
 	/**
 	 * メッセージを送信するメソッド
+	 * 
 	 * @param session 送信先のセッション
 	 * @param message 送信するMessageクラス
 	 * @return なし
@@ -175,9 +176,14 @@ public class LServerConnector {
 	 * @author den3asphalt
 	 */
 	public void sendMessage(Session session, Message message) {
-		// ログ
-		System.out.println("[Lobby] sendMessage(): " +gson.toJson(message));
-		System.out.println(); // 長いので空行挟む
+		if (!message.order.equals("2004")) {
+			// ログ
+			System.out.println("[Lobby] sendMessage(): " + gson.toJson(message));
+			System.out.println(); // 長いので空行挟む
+		}else{
+			System.out.println("[Lobby] sendMessage(): rule");
+		}
+
 		try {
 			// 同期送信（sync）
 			session.getBasicRemote().sendText(gson.toJson(message));
@@ -203,7 +209,7 @@ public class LServerConnector {
 	 */
 	public Message registerUser(String user_id, String password) {
 		// 2000:ユーザー登録
-		return LController.registerUser(user_id, password);
+		return lController.registerUser(user_id, password);
 	}
 
 	/**
@@ -219,7 +225,7 @@ public class LServerConnector {
 	 */
 	public Message login(String user_id, String password) {
 		// 2001:ログイン
-		return LController.login(user_id, password);
+		return lController.login(user_id, password);
 	}
 
 	// public void logout(String user_id) {
@@ -238,7 +244,7 @@ public class LServerConnector {
 	 * @author den3asphalt
 	 */
 	public ArrayList<User> getUserList() {
-		return LController.getUserList();
+		return lController.getUserList();
 	}
 
 	/**
@@ -277,7 +283,7 @@ public class LServerConnector {
 	public Message getScore(String user_id) {
 		Message message = new Message("2003", user_id);
 
-		ArrayList<Integer> score = LDatabaseConnector.getScore(user_id);
+		ArrayList<Integer> score = lController.lDatabaseConnector.getScore(user_id);
 		message.messageContent.num_plays_score = score.get(0);
 		message.messageContent.num_wins_score = score.get(1);
 		message.messageContent.num_hits_score = score.get(2);
@@ -297,7 +303,7 @@ public class LServerConnector {
 	 */
 	public Message getRule(String user_id) {
 		Message message = new Message("2004", user_id);
-		String rule = LDatabaseConnector.getRule();
+		String rule = lController.lDatabaseConnector.getRule();
 
 		message.messageContent.image_data = rule;
 

@@ -3,6 +3,8 @@ package com.example.hl_lobbyserver;
 import java.util.ArrayList;
 import java.sql.*;
 
+import com.mysql.jdbc.Driver;
+
 /**
  * データベースとの通信を行うクラス
  * <p>
@@ -38,7 +40,7 @@ public class LDatabaseConnector {
      * @throws なし
      * @author den3asphalt
      */
-    public static String getRule() {
+    public String getRule() {
         String rule = null;
         try {
 
@@ -59,7 +61,7 @@ public class LDatabaseConnector {
 
             // 得られた結果の集合から必要なデータを取り出す
             while (rs.next()) {
-                System.out.println(rs.getString(1));
+                System.out.println("[Lobby] getRule(): Done");
                 rule = rs.getString(1);
             }
 
@@ -80,7 +82,7 @@ public class LDatabaseConnector {
      * @throws なし
      * @author den3asphalt
      */
-    public static ArrayList<User> getUserList() {
+    public ArrayList<User> getUserList() {
         ArrayList<User> user_list = new ArrayList<User>();
         try {
 
@@ -121,7 +123,7 @@ public class LDatabaseConnector {
      * @throws なし
      * @author den3asphalt
      */
-    public static void registerUser(String user_id, String password) {
+    public void registerUser(String user_id, String password) {
         try {
 
             // 接続先はこんな感じの文字列->jdbc:mysql://sql.yamazaki.se.shibaura-it.ac.jp:13307/データベース名
@@ -155,7 +157,7 @@ public class LDatabaseConnector {
      * @throws なし
      * @author den3asphalt
      */
-    public static ArrayList<Integer> getScore(String user_id) {
+    public ArrayList<Integer> getScore(String user_id) {
         ArrayList<Integer> scoreDataList = null;
         try {
 
