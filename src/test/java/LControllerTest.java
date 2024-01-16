@@ -10,19 +10,21 @@ import java.util.ArrayList;
 
 public class LControllerTest {
     ArrayList<User> userList;
+    LController lController;
 
     @BeforeEach
     void setUp() {
         userList = new ArrayList<User>();
         userList.add(new User("test", "test"));
+        lController = new LController();
     }
 
     @Test
     void testcheckDuplicateUserID(){
         // ユーザIDが重複している場合
-        assertEquals(true, LController.checkDuplicateUserID("test", userList));
+        assertEquals(true, lController.checkDuplicateUserID("test", userList));
         // ユーザIDが重複していない場合
-        assertEquals(false, LController.checkDuplicateUserID("test2", userList));
+        assertEquals(false, lController.checkDuplicateUserID("test2", userList));
     }
 
     // 殆どの処理が通信後即返却なのでテストができませんでした

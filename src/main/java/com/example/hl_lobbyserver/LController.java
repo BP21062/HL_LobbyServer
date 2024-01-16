@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 /**
  * ロビーサーバーのコントローラー
- * <p>
- * staticに使い、インスタンス化はしない
  */
 public class LController {
+
+	LDatabaseConnector lDatabaseConnector = new LDatabaseConnector();
 
 	/**
 	 * ユーザー登録
@@ -21,15 +21,15 @@ public class LController {
 	 * @throws なし
 	 * @author den3asphalt
 	 */
-	public static Message registerUser(String user_id, String password) {
+	public Message registerUser(String user_id, String password) {
 		Boolean result = checkDuplicateUserID(user_id, getUserList());
 		Message message = new Message("2000", user_id);
 
-		message.result = result;
+		message.result = !result;
 
 		if (!result) {
 			// false=重複していない
-			LDatabaseConnector.registerUser(user_id, password);
+			lDatabaseConnector.registerUser(user_id, password);
 		}
 
 		return message;
@@ -45,8 +45,8 @@ public class LController {
 	 * @throws なし
 	 * @author deh3asphalt
 	 */
-	public static ArrayList<User> getUserList() {
-		return LDatabaseConnector.getUserList();
+	public ArrayList<User> getUserList() {
+		return lDatabaseConnector.getUserList();
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class LController {
 	 * @return 重複しているかどうか
 	 * @throws なし
 	 */
-	public static Boolean checkDuplicateUserID(String user_id, ArrayList<User> user_list) {
+	public Boolean checkDuplicateUserID(String user_id, ArrayList<User> user_list) {
 		for (User user : user_list) {
 			if (user.user_id.equals(user_id)) {
 				return true;
@@ -78,7 +78,7 @@ public class LController {
 	 * @throws なし
 	 * @author den3asphalt
 	 */
-	public static Message login(String user_id, String password) {
+	public Message login(String user_id, String password) {
 		Boolean result = verifyUserIDAndPassword(user_id, password);
 		Message message = new Message("2001", user_id);
 		message.result = result;
@@ -95,7 +95,7 @@ public class LController {
 	 * @throws なし
 	 * @author den3asphalt
 	 */
-	public static Boolean verifyUserIDAndPassword(String user_id, String password) {
+	public Boolean verifyUserIDAndPassword(String user_id, String password) {
 		ArrayList<User> user_list = getUserList();
 		for (User user : user_list) {
 			if (user.user_id.equals(user_id) && user.password.equals(password)) {
